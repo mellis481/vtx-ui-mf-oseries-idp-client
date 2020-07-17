@@ -1,10 +1,15 @@
 import * as React from "react";
 
 export default function Root(props) {
+  const { name, authInfo } = props;
   return (
     <>
-      <h2>{props.name} is mounted!</h2>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+      <h2>{name} microfrontend</h2>
+      {!authInfo ? (
+        <div>No auth info provided!</div>
+      ) : (
+        <pre>{JSON.stringify(JSON.parse(authInfo), null, 2)}</pre>
+      )}
     </>
   );
 }
