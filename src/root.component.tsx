@@ -2,7 +2,7 @@ import * as React from "react";
 
 interface OwnProps {
   name: string;
-  user: any;
+  getUser: () => any;
 }
 
 interface ComponentState {
@@ -24,7 +24,8 @@ export class Root extends React.Component<OwnProps, ComponentState> {
   }
 
   render() {
-    const { name, user } = this.props;
+    const { name, getUser } = this.props;
+    const user = getUser != null ? getUser() : undefined;
 
     return (
       <>
