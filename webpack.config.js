@@ -19,7 +19,7 @@ module.exports = (webpackConfigEnv) => {
       output: {
         filename: `vtx-ui-mf-oseries-idp-client.js`,
         libraryTarget: "system",
-        path: path.resolve(process.cwd(), "dist"),
+        path: path.resolve(process.cwd(), "build"),
         jsonpFunction: `webpackJsonp_vtx-ui-mf-oseries-idp-client`,
       },
       externals: ["single-spa"],
