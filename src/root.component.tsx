@@ -27,7 +27,7 @@ export class Root extends React.Component<OwnProps, ComponentState> {
     const { name, authInfo } = this.props;
 
     return (
-      <>
+      <div className="vtx-ui-mf-oseries-idp-client">
         <h2>{name} microfrontend</h2>
         {!authInfo ? (
           <div>No auth info provided. Not good!</div>
@@ -57,7 +57,7 @@ export class Root extends React.Component<OwnProps, ComponentState> {
             <pre>{JSON.stringify(this.userInfo, null, 2)}</pre>
           )}
         </div>
-      </>
+      </div>
     );
   }
 }
