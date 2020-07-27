@@ -3,6 +3,7 @@ import * as React from "react";
 interface OwnProps {
   name: string;
   loginUser: any;
+  logOut: () => Promise<void>;
 }
 
 interface ComponentState {
@@ -24,13 +25,13 @@ export class Root extends React.Component<OwnProps, ComponentState> {
   }
 
   render() {
-    const { name, loginUser } = this.props;
+    const { name, loginUser, logOut } = this.props;
 
     return (
       <div className="vtx-ui-mf-oseries-idp-client">
         <h2>{name} microfrontend</h2>
         {!loginUser ? (
-          <div>No auth info provided. Not good!</div>
+          <div>No user provided. Not good!</div>
         ) : (
           <pre>{JSON.stringify(loginUser, null, 2)}</pre>
         )}
@@ -52,6 +53,9 @@ export class Root extends React.Component<OwnProps, ComponentState> {
             }}
           >
             Get User Info
+          </button>
+          <button type="button" onClick={logOut} style={{ marginLeft: "15px" }}>
+            Log out
           </button>
           {this.userInfo != null && (
             <pre>{JSON.stringify(this.userInfo, null, 2)}</pre>
