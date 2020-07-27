@@ -2,7 +2,7 @@ import * as React from "react";
 
 interface OwnProps {
   name: string;
-  authInfo: any;
+  loginUser: any;
 }
 
 interface ComponentState {
@@ -24,15 +24,15 @@ export class Root extends React.Component<OwnProps, ComponentState> {
   }
 
   render() {
-    const { name, authInfo } = this.props;
+    const { name, loginUser } = this.props;
 
     return (
       <div className="vtx-ui-mf-oseries-idp-client">
         <h2>{name} microfrontend</h2>
-        {!authInfo ? (
+        {!loginUser ? (
           <div>No auth info provided. Not good!</div>
         ) : (
-          <pre>{JSON.stringify(authInfo, null, 2)}</pre>
+          <pre>{JSON.stringify(loginUser, null, 2)}</pre>
         )}
         <div style={{ marginTop: "20px" }}>
           <button
@@ -41,7 +41,7 @@ export class Root extends React.Component<OwnProps, ComponentState> {
               const that = this;
               fetch("http://kopas0036:9000/oseries-auth/user", {
                 headers: {
-                  Authorization: `Bearer ${authInfo.access_token}`,
+                  Authorization: `Bearer ${loginUser.access_token}`,
                 },
               })
                 .then((response) => response.json())
